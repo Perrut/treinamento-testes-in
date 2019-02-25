@@ -1,0 +1,22 @@
+<%= form_with(model: triangle, local: true) do |form| %>
+  <% if triangle.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(triangle.errors.count, "error") %> prohibited this triangle from being saved:</h2>
+
+      <ul>
+      <% triangle.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :side %>
+    <%= form.text_field :side %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
