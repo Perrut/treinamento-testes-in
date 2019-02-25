@@ -25,15 +25,19 @@ require 'rails_helper'
 
 RSpec.describe SquaresController, type: :controller do
 
+  before(:each) do
+    Square.destroy_all
+  end
+
   # This should return the minimal set of attributes required to create a valid
   # Square. As you add validations to Square, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    { "side": 4 }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { "side": 0 }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -97,14 +101,14 @@ RSpec.describe SquaresController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        { "side": 8 }
       }
 
       it "updates the requested square" do
         square = Square.create! valid_attributes
         put :update, params: {id: square.to_param, square: new_attributes}, session: valid_session
         square.reload
-        skip("Add assertions for updated state")
+        expect(square.area).to be(64.0)
       end
 
       it "redirects to the square" do
