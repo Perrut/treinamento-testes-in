@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Side</th>
+      <th>Area</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,6 +15,7 @@
     <% @squares.each do |square| %>
       <tr>
         <td><%= square.side %></td>
+        <td><%= area_with_units(square) %></td>
         <td><%= link_to 'Show', square %></td>
         <td><%= link_to 'Edit', edit_square_path(square) %></td>
         <td><%= link_to 'Destroy', square, method: :delete, data: { confirm: 'Are you sure?' } %></td>

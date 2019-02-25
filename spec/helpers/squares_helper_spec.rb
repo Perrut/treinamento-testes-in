@@ -11,5 +11,8 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe SquaresHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should print correct area" do
+    square = Square.create(side: 4)
+    expect(helper.area_with_units(square)).to eq("16.0 m2")
+  end
 end
